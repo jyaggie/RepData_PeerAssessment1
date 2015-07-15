@@ -27,7 +27,6 @@ library(dplyr)
 ```r
 activity<-read.table("activity.csv", header=TRUE, stringsAsFactor=FALSE, sep=",")
 activity_wo_na<-activity[!is.na(activity$steps),]
-grouped_by_day<- group_by(activity_wo_na, date)
 ```
 
 
@@ -39,6 +38,7 @@ grouped_by_day<- group_by(activity_wo_na, date)
 ## What is mean total number of steps taken per day?
 
 ```r
+grouped_by_day<- group_by(activity_wo_na, date)
 summary_steps <- summarise(grouped_by_day,
   total = sum(steps))
   mean(summary_steps$total)
@@ -61,7 +61,19 @@ summary_steps <- summarise(grouped_by_day,
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+
 ## What is the average daily activity pattern?
+
+```r
+grouped_by_day<- group_by(activity_wo_na, interval)
+ summary_steps <- summarise(grouped_by_day,  total = mean(steps))
+ x<- c("Midnight", "5:00AM", "10:00AM", "3:00PM", "8:00PM")
+plot(summary_steps$total~summary_steps$interval, type="l",  xaxt="n")
+ axis(1, at=c(0,500,1000,1500,2000),labels=x, col.axis="red")
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+
 
 
 
