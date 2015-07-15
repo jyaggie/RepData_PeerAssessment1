@@ -4,6 +4,10 @@ output:
   html_document:
     keep_md: true
 ---
+```{r echo=TRUE}
+library(xtable)
+```
+
 
 
 ## Loading and preprocessing the data
