@@ -4,6 +4,12 @@ output:
   html_document:
     keep_md: true
 ---
+```{r setoptions, echo=TRUE}
+require(knitr)
+opts_chunk$set(echo = TRUE, cache = TRUE, cache.path = "cache/", fig.path = "figure/")
+
+```
+
 
 
 Summary goes here $\sigma$
