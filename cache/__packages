@@ -3,3 +3,6 @@ knitr
 lubridate
 dplyr
 lattice
+nlme
+ggplot2
+mgcv
