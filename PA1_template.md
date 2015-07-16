@@ -1,9 +1,4 @@
-\---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+
 
 ```r
 require(knitr)
@@ -18,9 +13,11 @@ Summary goes here $\sigma$
 
 
 ```r
-library(lubridate)
+#required libraries
 library(dplyr)
 library(lattice)
+
+#load data
 activity<-read.table("activity.csv", header=TRUE, stringsAsFactor=FALSE, sep=",")
 activity_wo_na<-activity[!is.na(activity$steps),]
 ```
@@ -34,55 +31,76 @@ activity_wo_na<-activity[!is.na(activity$steps),]
 ## What is mean total number of steps taken per day?
 
 ```r
+#group by day and sum steps taken
 grouped_by_day<- group_by(activity_wo_na, date)
-summary_steps <- summarise(grouped_by_day,
-  total = sum(steps))
-  avgsteps<-mean(summary_steps$total)
-   mediansteps<-median(summary_steps$total)
-   hist(summary_steps$total, xlab="Total Number of Steps", main="Frequency of Total Number of Steps per Day", col=1, breaks=12)
-   abline(v = avgsteps, col = 7, lwd = 2)
+summary_steps <- summarise(grouped_by_day,total = sum(steps))
+
+#find the mean and median
+avgsteps<-mean(summary_steps$total)
+mediansteps<-median(summary_steps$total)
+
+#Construct a histogram with mean line
+hist(summary_steps$total, xlab="Total Number of Steps", main="Frequency of Total Number of Steps per Day", col=8, breaks=12)
+abline(v = avgsteps, col = 2, lwd = 2)
 ```
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+The average daily activity is 1.0766189 &times; 10<sup>4</sup> steps with median 10765.
+
+
+
 
 ## What is the average daily activity pattern?
 
 ```r
+#Group by intervals and find average
 grouped_by_int<- group_by(activity_wo_na, interval)
 summary_stepsint <- summarise(grouped_by_int,  avg = mean(steps))
+
+#plot
 plot(strptime(sprintf("%04d", summary_stepsint$interval), format="%H%M"), summary_stepsint$avg, type="l", xlab="Time of Day")
 ```
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+There is a significant spike in average acitivity in early morning and fairly large average steps through the late evening.   During the hours of 22:00 - 5:00 there is relatively no activity.
+
+
 
 
 ## Imputing missing values
 
 ```r
+#copy original data
 activity_na_replace<-activity
 
+#copy the intervals to an individual vector to loop over
 M<-summary_stepsint$interval
 for(i in M) 
   {
+#The average for this interval
   int_avg<-summary_stepsint[summary_stepsint$interval==i,]$avg
+  
+#if there are entries which are NA for this interval, replace them with the interval average  
 	if(dim(activity_na_replace[activity_na_replace$interval==i & is.na(activity_na_replace$steps),])[1]>0)
 		{
 activity_na_replace[activity_na_replace$interval==i & is.na(activity_na_replace$steps),]$steps = int_avg
-		}
-			 			 
+		}		 			 
 	}
-	
+
+
+#group by day the new data set and plot it
 grouped_by_day<- group_by(activity_na_replace, date)
 summary_steps <- summarise(grouped_by_day,
   total = sum(steps))
   avgsteps<-mean(summary_steps$total)
    mediansteps<-median(summary_steps$total)
-   hist(summary_steps$total, xlab="Total Number of Steps", main="Frequency of Total Number of Steps per Day", col=1, breaks=12)
+   hist(summary_steps$total, xlab="Total Number of Steps", main="Frequency of Total Number of Steps per Day", col=8, breaks=12)
 
-  abline(v = avgsteps, col = 7, lwd = 2)
+  abline(v = avgsteps, col = 2, lwd = 2)
 ```
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
+The average daily activity is 1.0766189 &times; 10<sup>4</sup> steps with median 1.0766189 &times; 10<sup>4</sup>.
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
