@@ -6,3 +6,6 @@ lattice
 nlme
 ggplot2
 mgcv
+AppliedPredictiveModeling
+caret
+rmarkdown
