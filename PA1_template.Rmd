@@ -59,8 +59,11 @@ summary_stepsint <- summarise(grouped_by_int,  avg = mean(steps))
 
 #plot
 plot(strptime(sprintf("%04d", summary_stepsint$interval), format="%H%M"), summary_stepsint$avg, type="l", xlab="Time of Day")
+
+#Information on max steps
+summary_stepsint[summary_stepsint$avg==max(summary_stepsint$avg),]
 ```
-There is a significant spike in average acitivity in early morning and fairly large average steps through the late evening.   During the hours of 22:00 - 5:00 there is relatively no activity.
+There is a significant spike in average acitivity in early morning and fairly large average steps through the late evening.   During the hours of 22:00 - 5:00 there is relatively no activity.  The highest average number of steps for all days occurs at 8:35AM.
 
 
 
@@ -128,6 +131,12 @@ int<- as.POSIXct(strptime(sprintf("%04d", summary_stepsint$interval), format="%H
 xyplot(summary_stepsint$avg~int|summary_stepsint$wday,type="l", auto.key=TRUE, scales=list(x=list(at=NULL)), xlab="Time (Between 00:00 and 23:55)", lwd=3)
 
 xyplot(summary_stepsint$avg~int, groups =summary_stepsint$wday,type="l", auto.key=TRUE, scales=list(x=list(at=NULL)), xlab="Time (Between 00:00 and 23:55)", lwd=3)
+
+#find max for weekend/weekday
+wdays<-summary_stepsint[summary_stepsint$wday=="Weekday",]
+wend<-summary_stepsint[summary_stepsint$wday=="Weekend",]
+wdays[wdays$avg==max(wdays$avg),]
+wend[wend$avg==max(wend$avg),]
 ```
-From the graph, one can see that the both weekend and weekdays have spikes in early morning;  however general activity starts earlier on weekday mornings.  Weekend afternoons also have more activity on average than weekday afternoons.  There is also some extra late activity on weekends.
+From the graph, one can see that the both weekend and weekdays have spikes in early morning;  however general activity starts earlier on weekday mornings.  Weekend afternoons also have more activity on average than weekday afternoons.  There is also some extra late activity on weekends.  More specifically, once see that the highest average of steps for the weekdays remains at 8:35AM.  However, this occurs slightly later - 8:50AM - on weekends.  However, the average number of steps for these intervals are approximately 211 in both cases.
 
