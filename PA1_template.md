@@ -7,6 +7,8 @@ opts_chunk$set(echo = TRUE, cache = TRUE, cache.path = "cache/", fig.path = "fig
 
 ## Summary
 
+Test for latex $\lambda_\sigma$
+
 This document investigates daily activity in terms of steps taken within five minute intervals.  The average and median are considered to determine how the data is distributed.  In addition, daily patterns are addressed by average steps per interval frequencies for all days and days broken up by weekend and weekday.
 
 
@@ -33,6 +35,9 @@ activity_wo_na<-activity[!is.na(activity$steps),]
 
 
 ## What is mean total number of steps taken per day?
+
+The following shows the frequency of daily activity in average number of steps.   The data was grouped by five minute intervals for each day, and then the average was found for each of these intervals.
+
 
 ```r
 #group by day and sum steps taken
@@ -86,7 +91,7 @@ There is a significant spike in average acitivity in early morning and fairly la
 
 The previously omitted missing values will be replaced with the average for the 5 minute interval in which the NA occurred.  This replacement was chosen in order to replace missing data with the most accurate apprximately for the relevant interval.
 
-The histogram, average, and median for this dataset is presented below.   
+The previous calculations to produce the histogram and average/median are then repeated.
 
 
 ```r
@@ -126,7 +131,7 @@ The average daily activity is 1.0766189 &times; 10<sup>4</sup> steps with median
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-The following data is presented twice.  Once as panels per the assignment description, and once as a superimposed graph.  I included both, because I find the non-panel version easier for comparisons.
+The following data is presented twice.  Once as panels per the assignment description, and once as a superimposed graph.  I included both, because I find the superimposed version easier for visual comparisons.
 
 
 
@@ -145,21 +150,52 @@ grouped_by_int<- group_by(activity_na_replace, interval, wday)
 #Plot the data
 int<- as.POSIXct(strptime(sprintf("%04d", summary_stepsint$interval), format="%H%M"))
 
-xyplot(summary_stepsint$avg~int|summary_stepsint$wday,type="l", auto.key=TRUE, scales=list(x=list(at=NULL)), xlab="Time (Between 00:00 and 23:55)", lwd=3)
+xyplot(summary_stepsint$avg~int|summary_stepsint$wday,type="l", auto.key=TRUE, scales=list(x=list(at=NULL)), xlab="Time (Between 00:00 and 23:55)", lwd=2)
 ```
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 ```r
-xyplot(summary_stepsint$avg~int, groups =summary_stepsint$wday,type="l", auto.key=TRUE, scales=list(x=list(at=NULL)), xlab="Time (Between 00:00 and 23:55)", lwd=3)
+xyplot(summary_stepsint$avg~int, groups =summary_stepsint$wday,type="l", auto.key=TRUE, scales=list(x=list(at=NULL)), xlab="Time (Between 00:00 and 23:55)", lwd=2)
 ```
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-2.png) 
 
 ```r
-#find max for weekend/weekday
+#split data for weekend and weekdays
 wdays<-summary_stepsint[summary_stepsint$wday=="Weekday",]
 wend<-summary_stepsint[summary_stepsint$wday=="Weekend",]
+
+#summary for weekend/weekday
+summary(wdays)
+```
+
+```
+##     interval           wday          avg        
+##  Min.   :   0.0   Weekday:288   Min.   :  0.00  
+##  1st Qu.: 588.8   Weekend:  0   1st Qu.:  2.21  
+##  Median :1177.5                 Median : 24.68  
+##  Mean   :1177.5                 Mean   : 35.67  
+##  3rd Qu.:1766.2                 3rd Qu.: 52.70  
+##  Max.   :2355.0                 Max.   :211.27
+```
+
+```r
+summary(wend)
+```
+
+```
+##     interval           wday          avg         
+##  Min.   :   0.0   Weekday:  0   Min.   :  0.000  
+##  1st Qu.: 588.8   Weekend:288   1st Qu.:  2.011  
+##  Median :1177.5                 Median : 27.017  
+##  Mean   :1177.5                 Mean   : 41.822  
+##  3rd Qu.:1766.2                 3rd Qu.: 69.130  
+##  Max.   :2355.0                 Max.   :211.658
+```
+
+```r
+#Find the interval where the max occurs
 wdays[wdays$avg==max(wdays$avg),]
 ```
 
