@@ -1,0 +1,383 @@
+dim(mixtures)
+mixtures$CompressiveStrength
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4)
+inTrain
+dim(inTrain)
+inTrain = createDataPartition(pmltrainingdata, p = 3/4)[[1]]
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4)[[1]]
+inTrain
+cor(pmltrainingdata)
+training<-pmltrainingdata[inTrain]
+training<-pmltrainingdata[,inTrain]
+training<-pmltrainingdata[inTrain,]
+testing<-pmltrainingdata[-inTrain,]
+cor(training)
+sapply(training, as.numeric)
+n<-na.omit(training)
+cor(n)
+class(pmltrainingdata)
+class(pmltrainingdata)
+corr(n)
+data(spam)
+library(kernlab)
+library(kernlab)
+data(spam)
+intrain<createDataPartition(y=spam$type, p=.75, list=FALSE)
+intrain<-createDataPartition(y=spam$type, p=.75, list=FALSE)
+training<-spam[intrain,]
+testing<-spam[-intrain,]
+cor(training[,-50])
+library(caret)
+cor(training[,-50])
+cor(training[,-58])
+n<-na.omit(training)
+cor(n[,-160])
+str(spam)
+str(training)
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4)[[1]]
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4)
+training<-pmltrainingdata[inTrain,]
+inTrain = createDataPartition(pmltrainingdata, p = 3/4)
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4)
+training<-pmltrainingdata[inTrain,]
+training<-pmltrainingdata[inTrain,]
+class(inTrain)
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4, list=FALSE)
+class(inTrain)
+training<-pmltrainingdata[inTrain,]
+testing<-pmltrainingdata[-inTrain,]
+dim(training)
+str(training)
+pmltrainingdata<-read.csv("pml-training.csv", sep=',', stringsAsFactors=FALSE, header=TRUE,na.strings="")
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4, list=FALSE)
+training<-pmltrainingdata[inTrain,]
+testing<-pmltrainingdata[-inTrain,]
+str(training)
+str(training)
+sapply(training, as.numeric)
+str(training)
+t2<-sapply(training, as.numeric)
+str(t2)
+summary(training)
+as.numeric(training[grep("_")],)
+as.numeric(training[grep(training,"_")],)
+pmltrainingdata<-read.csv("pml-training.csv", sep=',', stringsAsFactors=FALSE, header=TRUE,na.strings="")
+inTrain = createDataPartition(pmltrainingdata$classe, p = 3/4, list=FALSE)
+training<-pmltrainingdata[inTrain,]
+testing<-pmltrainingdata[-inTrain,]
+str(train)
+str(training)
+str(train)
+pmltrainingdata<-read.csv("pml-training.csv", sep=',', stringsAsFactors=FALSE, header=TRUE)
+str(pmltrainingdata)
+nei<-readRDS("NEI.rds", header=TRUE, stringsAsFactors=FALSE)
+nei<-readRDS("NEI.rds")
+nei<-readRDS("Source_NEI.rds")
+snei<-readRDS("Source_NEI.rds")
+nei<-readRDS("NEI.rds")
+str(sei)
+str(nei)
+dim(nei)
+snei
+dim(snei)
+library(dplyr)
+grouped_by_pollutant(nei, pollutant)
+grouped_by_pollutant<-group_by(nei, pollutant)
+grouped_by_pollutant<-group_by(nei, Pollutant)
+grouped_by_pollutant<-group_by(nei, Year, Pollutant)
+grouped_by_pollutant<-group_by(nei, year, Pollutant)
+Snei<-summarise(grouped_by_pollutant, sum())
+grouped_by_pollutant<-group_by(nei, Year)
+grouped_by_pollutant<-group_by(nei, year)
+grouped_by_year<-group_by(nei, year)
+Snei<-summarise(grouped_by_pollutant, sum(Emissions))
+Snei
+head(nei)
+str(Snei)
+hist(Snei)
+Snei<-summarise(grouped_by_pollutant, sumE=sum(Emissions))
+hist(Snei$sumE, Snei$year)
+hist(Snei$sumE)
+plot(Snei$sumE~Snei$year)
+plot(Snei$sumE~Snei$year, type="l", ylim=0)
+plot(Snei$sumE~Snei$year, type="l", ylim=c(0))
+plot(Snei$sumE~Snei$year, type="l", ylim=c(0, 8000000))
+barplot(Snei$Sume, Snei$year)
+barplot(Snei$year, Snei$sumE)
+barplot(Snei$year, Snei$sumE, horiz=TRUE,#
+  names.arg=c("1999", "2002", "2005", "2008"))
+barplot(Snei$year, Snei$sumE, horiz=TRUE,#
+  names.arg=c("1999", "2002", "2005", "2008"), xlim=c(0, 800000))
+barplot(Snei$year, Snei$sumE, horiz=TRUE,#
+  names.arg=c("1999", "2002", "2005", "2008"), xlim=c(0, 8000))
+barplot(Snei$sumE, horiz=TRUE,#
+  names.arg=c("1999", "2002", "2005", "2008"), xlim=c(0, 8000))
+barplot(Snei$sumE, horiz=TRUE,#
+  names.arg=c("1999", "2002", "2005", "2008"), xlim=c(0, 80000000))
+barplot(Snei$sumE, horiz=TRUE,#
+  names.arg=c("1999", "2002", "2005", "2008"), xlim=c(0, 800000))
+barplot(Snei$sumE, horiz=TRUE,#
+  names.arg=c("1999", "2002", "2005", "2008"), xlim=c(0, 8000000))
+barplot(Snei$sumE, #
+  names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000))
+barplot(Snei$sumE, #
+  names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylabel="Total Emissions", main="Total Emissions by Year")
+barplot(Snei$sumE, #
+  names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+nei<-readRDS("NEI.rds")
+knit2html("PA1_template.Rmd")
+knit2html("PA1_template.Rmd")
+getwd()
+dir()
+knit2html("PA1_template.Rmd")
+library(knitr)
+knit2html("PA1_template.Rmd")
+knit2html("PA1_template.Rmd")
+knit2html("PA1_template.Rmd")
+knit2pdf("PA1_template.Rmd")
+grouped_by_year<-group_by(nei, year)Bnei<-nei[flips=="24510"]#
+grouped_by_year<-group_by(Bnei, year) #
+Snei<-summarise(grouped_by_pollutant, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+Bnei<-nei[flips=="24510",]#
+grouped_by_year<-group_by(Bnei, year) #
+Snei<-summarise(grouped_by_pollutant, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+Bnei<-nei[fips=="24510",]#
+grouped_by_year<-group_by(Bnei, year) #
+Snei<-summarise(grouped_by_pollutant, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+Bnei<-nei[nei$fips=="24510",]#
+grouped_by_year<-group_by(Bnei, year) #
+Snei<-summarise(grouped_by_pollutant, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+Snei
+grouped_by_year<-group_by(nei, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+Snei
+Bnei<-nei[nei$fips=="24510",]#
+grouped_by_year<-group_by(Bnei, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+Snei
+Bnei<-nei[nei$fips=="24510",]#
+grouped_by_year<-group_by(Bnei, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 4000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")
+library(ggplot2)#
+Bnei<-nei[nei$fips=="24510",]#
+grouped_by_year<-group_by(Bnei,type, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions))
+Snei
+Snei$type<-as.factor(Snei$type)
+p <- ggplot(Snei, aes(sumE, year))
+p
+p + geom_point(size = 4)
+p + geom_point(aes(colour = type), size = 4)
+p <- ggplot(Snei, aes(sumE, year), type="l")
+p + geom_point(aes(colour = type), size = 4)
+p + geom_line(aes(colour = type), size = 4)
+p <- ggplot(Snei, aes(year,sumE), type="l")
+p + geom_line(aes(colour = type), size = 2)
+p + geom_smooth(aes(colour = type), size = 2)
+p + geom_line(aes(colour = type), size = 2)
+abs(x="Date", y=expression(paste("Temperature ( ", degree ~ F, " )")), title="Temperature")
+p+abs(x="Date", y=expression(paste("Temperature ( ", degree ~ F, " )")), title="Temperature")
+p+labs(x="Year", y="Emissions", title="Emission by Year (Baltimore, MD)")
+p <- ggplot(Snei, aes(year,sumE), type="l")
+p + geom_line(aes(colour = type), size = 2)
+p+labs(x="Year", y="Emissions", title="Emission by Year (Baltimore, MD)")
+p + geom_line(aes(colour = type), size = 2)+ggtitle("China C02 Emissions") +#
+  labs(x="Year",y="C02 Emissions")
+p + geom_line(aes(colour = type), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +#
+  labs(x="Year",y="Emissions")
+p <- ggplot(Snei, aes(year,sumE))#
+p + geom_line(aes(colour = type), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +#
++   labs(x="Year",y="Emissions")
+p <- ggplot(Snei, aes(year,sumE))#
+p + geom_line(aes(colour = type), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+colnames(snei)
+head(snei)
+indices <- grep("*coal*|*feul comb*", snei$EI.Sector, ignore.case=T)
+indices
+length(indices)
+coal <- as.character(snei$SCC[indices])
+p25 <- nei[nei$SCC %in% coal,]
+dim(p25)
+coal
+as.character(snei$SCC[indices])
+as.character(snei[indices])
+snei[indices
+]
+snei[indices,]
+colnames(snei)
+snei$EI.Sector[indices,]
+as.character(snei$EI.Sector"[indices])
+""
+as.character(snei$EI.Sector[indices])
+indices <- grep("*coal*|*fuel comb*", snei$EI.Sector, ignore.case=T)
+length(inddices)
+length(indices)
+as.character(snei$EI.Sector[indices])
+indices <- grep("*'coal'*|*'fuel comb'*", snei$EI.Sector, ignore.case=T)
+length(indices)
+indices <- grep("*coal*|*fuel comb*", snei$EI.Sector, ignore.case=T)
+indices <- grep("*coal*|*fuel comb*", snei$EI.Sector, ignore.case=T)
+indices <- grep("*coal*&*fuel comb*", snei$EI.Sector, ignore.case=T)
+length(indices)
+length(indices)
+indices <- grep("*fuel comb*", snei$EI.Sector, ignore.case=T)
+length(indices)
+indices <- grep("*coal*", snei$EI.Sector, ignore.case=T)
+length(indices)
+indices <- grep("*coal*&*fuel comb*", snei$EI.Sector, ignore.case=T)
+length(indices)
+indices <- grep("*coal*|*fuel comb*", snei$EI.Sector, ignore.case=T)
+length(indices)
+indices <- grep("*coal*", snei$EI.Sector, ignore.case=T)
+length(indices)
+coal <- as.character(snei$SCC[indices])
+p25 <- nei[nei$SCC %in% coal,]
+dim(p25)
+indices <- grep("*coal*", snei$EI.Sector, ignore.case=T)#
+#
+coal <- as.character(snei$SCC[indices])#
+p25 <- nei[nei$SCC %in% coal,]#
+grouped_by_year<-group_by(p25,type, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 4000), col=3, xlab="Year", ylab="Total Emissions", main="Total Coal Emissions by Year ")
+indices <- grep("*coal*", snei$EI.Sector, ignore.case=T)#
+#
+coal <- as.character(snei$SCC[indices])#
+p25 <- nei[nei$SCC %in% coal,]#
+grouped_by_year<-group_by(p25, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 4000), col=3, xlab="Year", ylab="Total Emissions", main="Total Coal Emissions by Year ")
+Snei
+indices <- grep("*coal*", snei$EI.Sector, ignore.case=T)#
+#
+coal <- as.character(snei$SCC[indices])#
+p25 <- nei[nei$SCC %in% coal,]#
+grouped_by_year<-group_by(p25, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 600000), col=3, xlab="Year", ylab="Total Emissions", main="Total Coal Emissions by Year ")
+Bnei<-nei[nei$fips=="24510",]
+Bnei<-nei[nei$fips=="24510"&nei$type="ONROAD",]
+Bnei<-nei[nei$fips=="24510"&nei$type=="ONROAD",]
+dim(Bnei)
+nei$type
+Bnei<-nei[nei$fips=="24510"&nei$type=="ON-ROAD",]
+dim(Bnei)
+grouped_by_year<-group_by(Bnei,type, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+Snei$type<-as.factor(Snei$type)#
+#
+p <- ggplot(Snei, aes(sumE, year))
+p <- ggplot(Snei, aes(year,sumE))
+p++ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+p+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+geom_line(aes(colour = type), size = 2)
+p+geom_line(aes(colour = type), size = 2)
+p+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+p+geom_line(aes(colour = type), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+Snei
+BLAnei<-nei[(nei$fips=="24510"|nei$fips == "06037")&nei$type=="ON-ROAD",]
+dim(BLAnei)
+BLAnei<-nei[(nei$fips == "06037")&nei$type=="ON-ROAD",]
+dim(BLAnei)
+BLAnei<-nei[nei$fips == "06037"&nei$type=="ON-ROAD",]
+dim(BLAnei)
+Bnei<-nei[nei$fips=="24510"&nei$type=="ON-ROAD",]
+dim(Bnei)
+979+1119
+BLAnei<-nei[(nei$fips=="24510"|nei$fips == "06037")&nei$type=="ON-ROAD",]
+grouped_by_year<-group_by(Bnei,type, year) #
+#
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions))#
+Snei$type<-as.factor(Snei$fips)#
+ p <- ggplot(Snei, aes(year,sumE))#
+p+geom_line(aes(colour = fips), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+BLAnei<-nei[(nei$fips=="24510"|nei$fips == "06037")&nei$type=="ON-ROAD",]#
+grouped_by_year<-group_by(BLAnei,type, year) #
+#
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions))#
+Snei$type<-as.factor(Snei$fips)
+Snei
+grouped_by_year<-group_by(BLAnei,fips, year) #
+#
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions))#
+Snei$type<-as.factor(Snei$fips)
+p <- ggplot(Snei, aes(year,sumE))#
+p+geom_line(aes(colour = fips), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+Snei[Snei$fips=="24510",]$fips="Baltimore"#
+Snei[Snei$fips=="06037",]$fips="Los Angeles"#
+#
+Snei$fips<-as.factor(Snei$fips)
+p <- ggplot(Snei, aes(year,sumE))#
+p+geom_line(aes(colour = fips), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")
+grouped_by_year<-group_by(nei, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+png("plot1.png", width=500, height=500)#
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 8000000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year")#
+dev.off()
+Bnei<-nei[nei$fips=="24510",]#
+grouped_by_year<-group_by(Bnei, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+png("plot2.png", width=500, height=500)#
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 4000), col=3, xlab="Year", ylab="Total Emissions", main="Total Emissions by Year (for Baltimore, MD)")#
+dev.off()
+library(ggplot2)#
+Bnei<-nei[nei$fips=="24510",]#
+grouped_by_year<-group_by(Bnei,type, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+Snei$type<-as.factor(Snei$type#
+#
+png("plot3.png", width=500, height=500)#
+p <- ggplot(Snei, aes(year,sumE))#
+p + geom_line(aes(colour = type), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")#
+dev.off()
+indices <- grep("*coal*", snei$EI.Sector, ignore.case=T)#
+#
+coal <- as.character(snei$SCC[indices])#
+p25 <- nei[nei$SCC %in% coal,]#
+grouped_by_year<-group_by(p25, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+png("plot4.png", width=500, height=500)#
+barplot(Snei$sumE, names.arg=c("1999", "2002", "2005", "2008"), ylim=c(0, 600000), col=3, xlab="Year", ylab="Total Emissions", main="Total Coal Emissions by Year ")#
+dev.off()
+library(ggplot2)#
+Bnei<-nei[nei$fips=="24510",]#
+grouped_by_year<-group_by(Bnei,type, year) #
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions)) #
+Snei$type<-as.factor(Snei$type)#
+#
+png("plot3.png", width=500, height=500)#
+p <- ggplot(Snei, aes(year,sumE))#
+p + geom_line(aes(colour = type), size = 2)+ggtitle("Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")#
+dev.off()
+Bnei<-nei[nei$fips=="24510"&nei$type=="ON-ROAD",]#
+#
+grouped_by_year<-group_by(Bnei,type, year) #
+#
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions))#
+Snei$type<-as.factor(Snei$type)#
+#
+png("plot5.png", width=500, height=500) #
+p <- ggplot(Snei, aes(year,sumE))#
+p+geom_line(aes(colour = type), size = 2)+ggtitle("Vehicle Emissions by Year (Baltimore, MD)") +   labs(x="Year",y="Emissions")#
+dev.off()
+BLAnei<-nei[(nei$fips=="24510"|nei$fips == "06037")&nei$type=="ON-ROAD",]#
+grouped_by_year<-group_by(BLAnei,fips, year) #
+#
+Snei<-summarise(grouped_by_year, sumE=sum(Emissions))#
+Snei[Snei$fips=="24510",]$fips="Baltimore"#
+Snei[Snei$fips=="06037",]$fips="Los Angeles"#
+#
+Snei$fips<-as.factor(Snei$fips)#
+png("plot6.png", width=500, height=500) #
+p <- ggplot(Snei, aes(year,sumE))#
+p+geom_line(aes(colour = fips), size = 2)+ggtitle("Vehicle Emissions by Year (Baltimore, MD and Los Angeles, CA)") +   labs(x="Year",y="Emissions")#
+ dev.off()
+knit2html("PA1_template.Rmd")
+knit2html("PA1_template.Rmd")

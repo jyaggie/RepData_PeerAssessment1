@@ -7,7 +7,6 @@ opts_chunk$set(echo = TRUE, cache = TRUE, cache.path = "cache/", fig.path = "fig
 
 ## Summary
 
-Test for latex $\lambda_\sigma$
 
 This document investigates daily activity in terms of steps taken within five minute intervals.  The average and median are considered to determine how the data is distributed.  In addition, daily patterns are addressed by average steps per interval frequencies for all days and days broken up by weekend and weekday.
 
@@ -52,7 +51,8 @@ hist(summary_steps$total, xlab="Total Number of Steps", main="Frequency of Total
 abline(v = avgsteps, col = 2, lwd = 2)
   
 ```
-The average daily activity is `r avgsteps` steps with median `r mediansteps`.  The median and mean are very similar when the NA values have been dropped.  Therefore, the data is evenly distributed around the mean.
+
+The average daily activity is `r avgsteps` steps with median `r mediansteps`.  The median and mean are very similar with the NA values have been dropped.  Therefore, the data is evenly distributed around the mean.
 
 
 
@@ -68,6 +68,7 @@ plot(strptime(sprintf("%04d", summary_stepsint$interval), format="%H%M"), summar
 #Information on max steps
 summary_stepsint[summary_stepsint$avg==max(summary_stepsint$avg),]
 ```
+
 There is a significant spike in average acitivity in early morning and fairly large average steps through the late evening.   During the hours of 22:00 - 5:00 there is relatively no activity.  The highest average number of steps for all days occurs at 8:35AM.
 
 
@@ -110,6 +111,7 @@ hist(summary_steps$total, xlab="Total Number of Steps", main="Frequency of Total
 abline(v = avgsteps, col = 2, lwd = 2)
 
 ```
+
 The average daily activity is `r avgsteps` steps with median `r mediansteps`.  The result of using the interval average is the mean and median for the average steps per day be the same.
 
 
@@ -149,5 +151,6 @@ summary(wend)
 wdays[wdays$avg==max(wdays$avg),]
 wend[wend$avg==max(wend$avg),]
 ```
+
 From the graph, one can see that the both weekend and weekdays have spikes in early morning;  however general activity starts earlier on weekday mornings.  Weekend afternoons also have more activity on average than weekday afternoons.  There is also some extra late activity on weekends.  More specifically, once see that the highest average of steps for the weekdays remains at 8:35AM.  However, this occurs slightly later - 8:50AM - on weekends.  However, the average number of steps for these intervals are approximately 211 in both cases.
 
